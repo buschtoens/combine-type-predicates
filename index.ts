@@ -69,6 +69,8 @@ type IntersectionOf<T extends unknown[]> = UnionToIntersection<UnionOf<T>>;
 
 /**
  * Combines a list of type predicate functions into a union type guard.
+ * 
+ * @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
  *
  * @example
  * ```ts
@@ -80,6 +82,16 @@ type IntersectionOf<T extends unknown[]> = UnionToIntersection<UnionOf<T>>;
  *
  * const isFooOrBar = isSome(isFoo, isBar);
  * // => (subject: unknown) => subject is Foo | Bar
+ * 
+ * if (isFooOrBar(x)) {
+ *   x.baz; // => string | number
+ * 
+ *   if ('foo' in x) {
+ *     x.foo; // => boolean
+ *   } else {
+ *     x.bar; // => symbol
+ *   }
+ * }
  * ```
  */
 export const isSome = <Types extends unknown[]>(
@@ -89,6 +101,8 @@ export const isSome = <Types extends unknown[]>(
 
 /**
  * Combines a list of type predicate functions into an intersection type guard.
+ * 
+ * @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#intersection-types
  *
  * @example
  * ```ts
@@ -100,6 +114,12 @@ export const isSome = <Types extends unknown[]>(
  *
  * const isFooAndBar = isEvery(isFoo, isBar);
  * // => (subject: unknown) => subject is Foo & Bar
+ * 
+ * if (isFooAndBar(x)) {
+ *   x.foo; // => boolean
+ *   x.bar; // => symbol
+ *   x.baz; // => never (no such thing as `string & number`)
+ * }
  * ```
  */
 export const isEvery = <Types extends unknown[]>(

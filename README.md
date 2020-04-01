@@ -21,12 +21,32 @@ import { isSome, isEvery } from 'combine-type-predicates';
 type Foo = { foo: boolean; baz: number };
 type Bar = { bar: symbol; baz: string };
 
-declare function isFoo(v: unknown): v is Foo;
-declare function isBar(v: unknown): v is Bar;
+const isFoo = (v: unknown): v is Foo
+  => typeof v.foo === 'boolean' && v.baz === 'number';
+const isBar = (v: unknown): v is Bar
+  => typeof v.bar === 'symbol' && v.baz === 'string';
 
 const isFooOrBar = isSome(isFoo, isBar);
 // => (subject: unknown) => subject is Foo | Bar
 
 const isFooAndBar = isEvery(isFoo, isBar);
 // => (subject: unknown) => subject is Foo & Bar
+
+const x: unknown = undefined;
+
+if (isFooOrBar(x)) {
+  x.baz; // => string | number
+
+  if ('foo' in x) {
+    x.foo; // => boolean
+  } else {
+    x.bar; // => symbol
+  }
+}
+
+if (isFooAndBar(x)) {
+  x.foo; // => boolean
+  x.bar; // => symbol
+  x.baz; // => never (no such thing as `string & number`)
+}
 ```
