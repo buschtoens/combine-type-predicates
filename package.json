@@ -1,6 +1,6 @@
 {
   "name": "combine-type-predicates",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Combine user-defined type guards / type predicates as unions and intersections.",
   "repository": "buschtoens/combine-type-predicates",
   "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
