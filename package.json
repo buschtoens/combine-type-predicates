@@ -19,6 +19,7 @@
   "scripts": {
     "lint:js": "eslint --ext ts,js .",
     "lint:types": "tsc --noEmit",
+    "test": "echo TODO: write some tests!",
     "prepack": "tsc --build",
     "postpack": "tsc --build --clean"
   },
