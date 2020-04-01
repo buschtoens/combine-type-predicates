@@ -1,0 +1,35 @@
+{
+  "name": "combine-type-predicates",
+  "version": "0.0.0",
+  "description": "Combine user-defined type guards / type predicates as unions and intersections.",
+  "repository": "buschtoens/combine-type-predicates",
+  "author": "Jan Buschtöns <jan@buschtoens.me> (https://jan.buschtoens.me)",
+  "license": "ISC",
+  "keywords": [
+    "typescript",
+    "ts",
+    "type",
+    "predicate",
+    "guard",
+    "union",
+    "intersection",
+    "join",
+    "merge"
+  ],
+  "scripts": {
+    "lint:js": "eslint --ext ts,js .",
+    "lint:types": "tsc --noEmit",
+    "prepack": "tsc --build",
+    "postpack": "tsc --build --clean"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "index.ts"
+  ],
+  "devDependencies": {
+    "@clark/eslint-config-typescript": "^1.24.1",
+    "eslint": "^6.8.0",
+    "typescript": "^3.8.3"
+  }
+}
