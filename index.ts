@@ -9,6 +9,8 @@
  * Retrieves the predicate type of a user-defined type predicate function.
  * Like `ReturnType<T>`, but for type predicate functions.
  *
+ * @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#using-type-predicates
+ *
  * @example
  * ```ts
  * type Foo = PredicateType<(subject: unknown) => is { foo: string }>;
@@ -69,7 +71,7 @@ type IntersectionOf<T extends unknown[]> = UnionToIntersection<UnionOf<T>>;
 
 /**
  * Combines a list of type predicate functions into a union type guard.
- * 
+ *
  * @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types
  *
  * @example
@@ -82,10 +84,10 @@ type IntersectionOf<T extends unknown[]> = UnionToIntersection<UnionOf<T>>;
  *
  * const isFooOrBar = isSome(isFoo, isBar);
  * // => (subject: unknown) => subject is Foo | Bar
- * 
+ *
  * if (isFooOrBar(x)) {
  *   x.baz; // => string | number
- * 
+ *
  *   if ('foo' in x) {
  *     x.foo; // => boolean
  *   } else {
@@ -101,7 +103,7 @@ export const isSome = <Types extends unknown[]>(
 
 /**
  * Combines a list of type predicate functions into an intersection type guard.
- * 
+ *
  * @see https://www.typescriptlang.org/docs/handbook/advanced-types.html#intersection-types
  *
  * @example
@@ -114,7 +116,7 @@ export const isSome = <Types extends unknown[]>(
  *
  * const isFooAndBar = isEvery(isFoo, isBar);
  * // => (subject: unknown) => subject is Foo & Bar
- * 
+ *
  * if (isFooAndBar(x)) {
  *   x.foo; // => boolean
  *   x.bar; // => symbol
