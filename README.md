@@ -22,9 +22,9 @@ type Foo = { foo: boolean; baz: number };
 type Bar = { bar: symbol; baz: string };
 
 const isFoo = (v: unknown): v is Foo
-  => typeof v.foo === 'boolean' && v.baz === 'number';
+  => typeof v.foo === 'boolean' && typeof v.baz === 'number';
 const isBar = (v: unknown): v is Bar
-  => typeof v.bar === 'symbol' && v.baz === 'string';
+  => typeof v.bar === 'symbol' && typeof v.baz === 'string';
 
 const isFooOrBar = isSome(isFoo, isBar);
 // => (subject: unknown) => subject is Foo | Bar
